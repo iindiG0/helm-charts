@@ -1,0 +1,17 @@
+# Number of PostgreSQL instances (1 = single, 3 = primary + 2 replicas with automatic failover)
+instances: 1
+
+storage:
+  size: 1Gi
+  # storageClass: ""   # empty = the cluster's default StorageClass
+
+# Database and owner created on first start
+database: app
+owner: app
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 128Mi
+  limits:
+    memory: 256Mi

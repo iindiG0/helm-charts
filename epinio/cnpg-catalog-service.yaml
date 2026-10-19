@@ -1,0 +1,26 @@
+# Epinio catalog entry: "CNPG PostgreSQL"
+# Apply once as the cluster admin:   kubectl apply -f cnpg-catalog-service.yaml
+apiVersion: application.epinio.io/v1
+kind: Service
+metadata:
+  name: cnpg-postgres
+  namespace: epinio
+  annotations:
+    # Bind the CNPG password Secret, which has type kubernetes.io/basic-auth
+    application.epinio.io/catalog-service-secret-types: kubernetes.io/basic-auth
+spec:
+  name: cnpg-postgres
+  shortDescription: PostgreSQL managed by CloudNativePG
+  description: |
+    Creates a dedicated PostgreSQL cluster with CloudNativePG (one instance, 1Gi).
+    Bind it to an app to receive uri, host, port, dbname, username and password
+    as files under /configurations/<release>-app/.
+  chart: cnpg-db
+  chartVersion: 0.1.0
+  helmRepo:
+    name: iindig0-charts
+    url: https://raw.githubusercontent.com/iindiG0/helm-charts/main
+  values: |-
+    instances: 1
+    storage:
+      size: 1Gi

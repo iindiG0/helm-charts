@@ -1,0 +1,33 @@
+# One CloudNativePG cluster per Epinio service instance.
+#
+# Why inheritedMetadata: Epinio finds the Secrets to bind by the label
+#   app.kubernetes.io/instance=<helm release name>
+# The password Secret (<name>-app) is created by the CNPG operator, not by Helm,
+# so it only gets that label if the Cluster passes it down via inheritedMetadata.
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/name: cnpg-db
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  instances: {{ .Values.instances }}
+  inheritedMetadata:
+    labels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  storage:
+    size: {{ .Values.storage.size }}
+    {{- with .Values.storage.storageClass }}
+    storageClass: {{ . }}
+    {{- end }}
+  {{- with .Values.resources }}
+  resources:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  bootstrap:
+    initdb:
+      database: {{ .Values.database }}
+      owner: {{ .Values.owner }}

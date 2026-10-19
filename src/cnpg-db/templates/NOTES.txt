@@ -1,0 +1,2 @@
+CloudNativePG cluster {{ .Release.Name }} created in namespace {{ .Release.Namespace }}.
+Connection details: Secret {{ .Release.Name }}-app (keys: uri, host, port, dbname, username, password).
