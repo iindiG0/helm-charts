@@ -9,9 +9,17 @@ storage:
 database: app
 owner: app
 
+# PostgreSQL settings (strings). shared_buffers ~ 1/4 of the memory limit.
+postgresql:
+  parameters:
+    shared_buffers: 256MB
+
+# Sized from the Oct 2026 benchmark: 50m CPU / 256Mi was too small
+# (+50% TPS with 500m; RAM was at 96% of 256Mi).
 resources:
   requests:
-    cpu: 50m
-    memory: 128Mi
+    cpu: 500m
+    memory: 512Mi
   limits:
-    memory: 256Mi
+    cpu: "2"
+    memory: 1Gi

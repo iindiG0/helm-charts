@@ -23,6 +23,13 @@ spec:
     {{- with .Values.storage.storageClass }}
     storageClass: {{ . }}
     {{- end }}
+  {{- with .Values.postgresql.parameters }}
+  postgresql:
+    parameters:
+      {{- range $k, $v := . }}
+      {{ $k }}: {{ $v | quote }}
+      {{- end }}
+  {{- end }}
   {{- with .Values.resources }}
   resources:
     {{- toYaml . | nindent 4 }}

@@ -3,6 +3,16 @@ entries:
   cnpg-db:
   - apiVersion: v2
     appVersion: "16"
+    created: "2026-10-20T00:00:00Z"
+    description: A PostgreSQL database managed by CloudNativePG, for use as an Epinio catalog service
+    digest: a4b0955c976870252c32f19e2d49ae49acf0a4a65eeb061b0ee854ff60bd9d38
+    name: cnpg-db
+    type: application
+    urls:
+    - cnpg-db-0.2.0.tgz
+    version: 0.2.0
+  - apiVersion: v2
+    appVersion: "16"
     created: "2026-10-19T00:00:00Z"
     description: A PostgreSQL database managed by CloudNativePG, for use as an Epinio catalog service
     digest: e950fc21a6de34dfd1cfd0a7913c0e88cba7bda6dedd9f5a842ce2bdf65b75dc
@@ -11,4 +21,4 @@ entries:
     urls:
     - cnpg-db-0.1.0.tgz
     version: 0.1.0
-generated: "2026-10-19T00:00:00Z"
+generated: "2026-10-20T00:00:00Z"

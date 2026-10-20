@@ -12,11 +12,11 @@ spec:
   name: cnpg-postgres
   shortDescription: PostgreSQL managed by CloudNativePG
   description: |
-    Creates a dedicated PostgreSQL cluster with CloudNativePG (one instance, 1Gi).
+    Creates a dedicated PostgreSQL cluster with CloudNativePG (one instance, 1Gi, 500m-2 CPU, 512Mi-1Gi RAM).
     Bind it to an app to receive uri, host, port, dbname, username and password
     as files under /configurations/<release>-app/.
   chart: cnpg-db
-  chartVersion: 0.1.0
+  chartVersion: 0.2.0
   helmRepo:
     name: iindig0-charts
     url: https://raw.githubusercontent.com/iindiG0/helm-charts/main
