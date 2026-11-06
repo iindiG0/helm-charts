@@ -3,7 +3,7 @@ instances: 1
 
 storage:
   size: 1Gi
-  # storageClass: ""   # empty = the cluster's default StorageClass
+  storageClass: "truenas-iscsi"   # empty = the cluster's default StorageClass
 
 # Database and owner created on first start
 database: app
